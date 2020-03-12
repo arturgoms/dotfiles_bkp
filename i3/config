@@ -1,0 +1,336 @@
+# Monitors
+# You can list your monitor with:
+# xrandr -q
+set $monitor_one DVI-1
+set $monitor_two DVI-0
+
+# Windows modkey
+set $mod Mod4
+
+# Fonts
+font pango:System San Francisco Display 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Launch terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec termite
+bindsym $mod+Return exec terminator
+# kill focused window
+bindsym $mod+q kill
+
+# Launch Firefox
+bindsym $mod+Shift+v exec vivaldi
+
+# Launch Chromium
+bindsym $mod+Shift+b exec chromium
+
+#Launch VSCode
+bindsym $mod+Shift+c exec code
+
+# Launch Thunar
+bindsym $mod+Shift+t exec thunar
+
+# Rofi menu launcher
+set $rofi_theme "$HOME/.config/i3/rofithemes/flat-blue.rasi"
+bindsym $mod+space exec rofi -show run -config $rofi_theme
+bindsym $mod+Shift+space exec rofi -show window -config $rofi_theme
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+ntilde focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+ntilde move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split horizontal and vertical orientation
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# Fullscreen mode
+bindsym $mod+f fullscreen toggle
+#bindsym --release $mod+y exec "sleep 0.2; xdotool key f; i3-msg fullscreen toggle"
+bindsym $mod+y floating toggle
+#bindsym $mod+y fullscreen disable, floating enable, resize set 250 170, sticky enable, move window to position 1515 20
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+r mode "resize"
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym i resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# toggle tiling / floating
+bindsym $mod+Shift+f floating toggle
+
+# change focus between tiling / floating windows
+# reload the configuration file
+#bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+#bindsym $mod+Shift+r restart
+# print screen
+#bindsym $mod+o exec print_screen
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# Workspace naming
+set $workspace1 "1: Code Editing "
+set $workspace2 "2: Navigation "
+set $workspace3 "3: Terminal "
+set $workspace4 "4: Texting "
+set $workspace5 "5: Folders "
+set $workspace6 "6: Mail "
+set $workspace7 "7: Notes "
+set $workspace8 "8: PDF "
+set $workspace9 "9: Tests "
+set $workspace10 "10: Music "
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# Fixing workspace to a certain monitor
+workspace $workspace1 output $monitor_two
+workspace $workspace2 output $monitor_two
+workspace $workspace3 output $monitor_two
+workspace $workspace4 output $monitor_one
+workspace $workspace5 output $monitor_one
+workspace $workspace6 output $monitor_one
+
+
+# Forcing apps on workspaces
+assign [class="terminology"] $workspace1
+# Web apps
+assign [class="Firefox"] $workspace2
+assign [class="Chromium"] $workspace2
+assign [class="Vivaldi"] $workspace2
+# Coding apps
+assign [class="Atom"] $workspace4
+assign [class="Code"] $workspace1
+assign [class="Gedit"] $workspace4
+assign [class="Kate"] $workspace4
+# File apps
+assign [class="Nautilus"] $workspace5
+assign [class="Thunar"] $workspace5
+# Texting apps
+assign [class="TelegramDesktop"] $workspace4
+assign [class="whatsapp-desktop"] $workspace4
+assign [class="Skypeforlinux"] $workspace4
+assign [class="Slack"] $workspace4
+# Music apps
+assign [class="spotify"] $workspace10
+assign [class="Spotify"] $workspace10
+assign [class="google-musicmanager"] $workspace10
+assign [class="YoutubePIP"] $workspace10
+# Mail apps
+assign [class="thunderbird"] $workspace6
+assign [class="Thunderbird"] $workspace6
+# Notes apps
+assign [class="simplenote"] $workspace7
+assign [class="Simplenote"] $workspace7
+assign [class="KeeWeb"] $workspace7
+# PDF's apps
+assign [class="okular"] $workspace8
+# Test Apps
+assign [class="VirtualBox"] $workspace9
+
+# reload the configuration file
+# bindsym $mod+Shift+c reload
+#
+# restart i3 inplace (preserves Four layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r exec "i3-msg restart"
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+
+# Color config
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color #E53935
+
+# Window colors
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+new_window pixel 0
+
+bar {
+    i3bar_command $HOME/.config/polybar/launch.sh
+ 
+#status_command i3status
+}
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec $HOME/bin/toggletouchpad # toggle touchpad
+
+# Music song controls
+bindsym XF86AudioPlay exec play_pause
+bindsym XF86AudioPause exec play_pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Personal KeyBindings
+bindsym $mod+x exec i3lock --color "$bg-color"
+bindsym $mod+Shift+x exec shutdown -h now
+
+# Invert scrolling
+exec_always --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
+
+# Disable tap while typing
+exec syndaemon -i 0.3 -t -K -R
+
+# Apps on start
+exec_always choose_wallpaper
+
+#set $feh exec --no-startup-id feh --bg-scale
+exec feh --bg-scale ~/Pictures/language_tree.png
+# Sysmem compositor
+exec_always compton
+
+# Taking a Screenshot
+
+bindsym $mod+o exec shutter -f
+for_window [class="Shutter"] fullscreen disable, floating enable;
+
+# Launch at APPs startup
+
+#exec firefox
+exec chromium-browser 	# Launch chromium at startup
+exec terminology 	# Launch terminology at startup
+exec thunar 		# Launch thunar at startup
+exec thunderbird 	# Launch thunderbird
+exec code 		# Launch VSCode
+exec slack 		# Launch Slack
+exec telegram		# Launch Telegram
+
+# XFCE Menu
+
+bindsym $mod+m exec xfdashboard
+for_window [class="^.*"] border pixel 0
+gaps inner 10
+gaps outer 0
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
+# play - pause
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# URGENT Window
+# It focus on a window once it becomes urgent
+# You could also combine criteria if you only want to focus certain applications:
+# for_window [urgent="latest" class="XTerm"] focus
+for_window [urgent="latest" class="Telegram"] focus
+
+default_orientation vertical
+for_window [class=".*"] split toggle
+#bindsym $mod+shift+q split toggle kill
+#bindsym $mod+e layout toggle split

@@ -1,0 +1,61 @@
+snippet frcc "Flow React Class Component" b
+// @flow
+import * as React from 'react'
+import './${2:$1}.css'
+
+type Props ={}
+type State = {}
+
+class ${1:`!v expand('%:t:r')`} extends React.Component<Props, State> {
+	constructor(props: Props) {
+		super(props)
+	}
+
+	render(): React.Node {
+		return (
+			<div className='$1'>
+				$3
+			</div>
+		)
+	}
+}
+
+export default $1
+endsnippet
+
+snippet nrcc "React Class Compnent"
+import React, { Component} from 'react';
+import styles from './${2:$1}.css';
+
+class $1 extends Component {
+
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<div className='$1'>
+
+			</div>
+		);
+	}
+}
+
+export default $1;
+endsnippet
+
+snippet ss "React set state" b
+this.setState({
+	...this.state,
+	$1
+})
+endsnippet
+
+snippet bf "React bind function" b
+self.$1 = self.$1.bind(this)
+endsnippet
+
+snippet cim "React component import" b
+import $1 from '../$1/$1'
+endsnippet
