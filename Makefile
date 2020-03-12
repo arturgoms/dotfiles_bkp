@@ -16,10 +16,10 @@ install:
 	ln -s $(DIR)/i3 /home/${USER}/.config/
 	ln -s $(DIR)/polybar /home/${USER}/.config/
 	ln -s $(DIR)/ranger /home/${USER}/.config/
-	ln -s $(DIR)/.zshrc /home/${USER}/
 	ln -s $(DIR)/.tmux.conf /home/${USER}/
 	ln -s $(DIR)/.tmux-themepack /home/${USER}/
 	ln -s $(DIR)/.tmux /home/${USER}/
+	ln -s $(DIR)/.zshrc /home/${USER}/
 	pip2 install -r requirements-2.txt
 	pip3 install -r requirements-3.txt
 
