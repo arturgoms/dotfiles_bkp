@@ -43,9 +43,13 @@ antigen apply
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
+export PATH="$PATH:/opt/yarn-0.32/bin"
 if [[ -r /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /home/artur/git/electron-web-worker-example/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/artur/git/electron-web-worker-example/node_modules/tabtab/.completions/electron-forge.zsh

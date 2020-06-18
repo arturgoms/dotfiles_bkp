@@ -1,7 +1,7 @@
 [bar/top]
 enable-ipc = true
 bottom = true
-monitor = DVI-1
+monitor = HDMI-1
 width = 100%
 height = 20
 dpi = 90
@@ -57,7 +57,7 @@ underline-size = 2
 underline-color = ${self.background}
 
 [bar/bottom]
-monitor = DVI-0
+monitor = VGA-1
 bottom = true
 width = 100%
 height = 20

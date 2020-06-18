@@ -1,12 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/home/artur/.config/nvim'
-let g:netrw_dirhist_2='/home/artur/git/lalC'
-let g:netrw_dirhist_1='/home/artur'
-let g:netrw_dirhist_0='/home/artur/git'
-let g:netrw_dirhist_9='/home/artur/git/lalC'
-let g:netrw_dirhist_8='/home/artur/git/lalC/libs'
-let g:netrw_dirhist_7='/'
-let g:netrw_dirhist_6='/home'
-let g:netrw_dirhist_5='/home/artur'
-let g:netrw_dirhist_4='/home/artur/git'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/artur/.config/polybar'
+let g:netrw_dirhist_2='/home/artur/.config'
+let g:netrw_dirhist_3='/home/artur/.config/polybar'

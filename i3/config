@@ -1,8 +1,8 @@
 # Monitors
 # You can list your monitor with:
 # xrandr -q
-set $monitor_one DVI-1
-set $monitor_two DVI-0
+set $monitor_one HDMI-1
+set $monitor_two VGA-1
 
 # Windows modkey
 set $mod Mod4
@@ -147,12 +147,12 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # Fixing workspace to a certain monitor
-workspace $workspace1 output $monitor_two
-workspace $workspace2 output $monitor_two
-workspace $workspace3 output $monitor_two
-workspace $workspace4 output $monitor_one
-workspace $workspace5 output $monitor_one
-workspace $workspace6 output $monitor_one
+workspace $workspace1 output $monitor_one
+workspace $workspace2 output $monitor_one
+workspace $workspace3 output $monitor_one
+workspace $workspace4 output $monitor_two
+workspace $workspace5 output $monitor_two
+workspace $workspace6 output $monitor_two
 
 
 # Forcing apps on workspaces
@@ -266,19 +266,19 @@ for_window [class="Shutter"] fullscreen disable, floating enable;
 # Launch at APPs startup
 
 #exec firefox
-exec chromium-browser 	# Launch chromium at startup
-exec terminology 	# Launch terminology at startup
-exec thunar 		# Launch thunar at startup
-exec thunderbird 	# Launch thunderbird
-exec code 		# Launch VSCode
-exec slack 		# Launch Slack
-exec telegram		# Launch Telegram
+#exec chromium-browser 	# Launch chromium at startup
+#exec terminology 	# Launch terminology at startup
+#exec thunar 		# Launch thunar at startup
+#exec thunderbird 	# Launch thunderbird
+#exec code 		# Launch VSCode
+#exec slack 		# Launch Slack
+#exec telegram		# Launch Telegram
 
 # XFCE Menu
 
 bindsym $mod+m exec xfdashboard
 for_window [class="^.*"] border pixel 0
-gaps inner 10
+gaps inner 0
 gaps outer 0
 
 # Smart gaps (gaps used if only more than one container on the workspace)
@@ -300,24 +300,24 @@ mode "$mode_gaps" {
         bindsym Escape mode "default"
 }
 mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
+        bindsym plus  gaps inner current plus 0
+        bindsym minus gaps inner current minus 0
         bindsym 0     gaps inner current set 0
 
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+plus  gaps inner all plus 0
+        bindsym Shift+minus gaps inner all minus 0
         bindsym Shift+0     gaps inner all set 0
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
+        bindsym plus  gaps outer current plus 0
+        bindsym minus gaps outer current minus 0
         bindsym 0     gaps outer current set 0
 
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+plus  gaps outer all plus 0
+        bindsym Shift+minus gaps outer all minus 0
         bindsym Shift+0     gaps outer all set 0
 
         bindsym Return mode "default"
